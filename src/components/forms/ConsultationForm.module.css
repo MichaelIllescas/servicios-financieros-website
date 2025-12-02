@@ -1,0 +1,466 @@
+/* Consultation Form Styles */
+.formSection {
+  background: linear-gradient(135deg, #0a1419 0%, #123142 50%, #1a4a5e 100%);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.formSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(233, 240, 201, 0.02) 10px,
+      rgba(233, 240, 201, 0.02) 20px
+    );
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Info Section */
+.infoSection {
+  position: sticky;
+  top: 100px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(233, 240, 201, 0.15), rgba(233, 240, 201, 0.05));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(233, 240, 201, 0.2);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #E9F0C9;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 40px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.benefit {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.benefitIcon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #E9F0C9, #b8c77e);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #123142;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(233, 240, 201, 0.3);
+}
+
+.benefit h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #E9F0C9;
+  margin-bottom: 4px;
+}
+
+.benefit p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Form Wrapper */
+.formWrapper {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 24px;
+  padding: 45px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(233, 240, 201, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-weight: 600;
+  color: #123142;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 16px;
+  color: #3B657A;
+  font-size: 18px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.input, .textarea {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+  color: #20130A;
+  font-family: inherit;
+}
+
+.input:hover, .textarea:hover {
+  border-color: #cbd5e1;
+  background: #ffffff;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: #123142;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(18, 49, 66, 0.1);
+}
+
+.input.error, .textarea.error {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+  padding-top: 14px;
+}
+
+.inputWrapper .textarea {
+  padding-left: 48px;
+}
+
+.inputWrapper .inputIcon {
+  top: 16px;
+  align-self: flex-start;
+}
+
+/* File Input */
+.fileInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileLabel {
+  flex: 1;
+  padding: 14px 20px;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  background: #f8fafc;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.fileLabel:hover {
+  border-color: #123142;
+  background: #ffffff;
+  color: #123142;
+}
+
+.fileIcon {
+  font-size: 24px;
+  color: #3B657A;
+}
+
+/* Toggle Button */
+.toggleSection {
+  margin: 8px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.toggleButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggleButton:hover {
+  border-color: #123142;
+  color: #123142;
+  background: #f8fafc;
+}
+
+/* Additional Fields */
+.additionalFields {
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  padding: 28px;
+  border-radius: 16px;
+  border: 2px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Error Messages */
+.errorMessage {
+  color: #ef4444;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.errorMessageBox {
+  background: #fef2f2;
+  border: 2px solid #fecaca;
+  color: #dc2626;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+/* Success Message */
+.successMessage {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 2px solid #86efac;
+  color: #166534;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+/* Submit Button */
+.submitButton {
+  background: linear-gradient(135deg, #123142 0%, #1a4a5e 100%);
+  color: white;
+  border: none;
+  padding: 18px 40px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(18, 49, 66, 0.3);
+}
+
+.submitButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(18, 49, 66, 0.5);
+  background: linear-gradient(135deg, #0a1419 0%, #123142 100%);
+}
+
+.submitButton:disabled {
+  background: linear-gradient(135deg, #94a3b8, #cbd5e1);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .infoSection {
+    position: static;
+    text-align: center;
+  }
+
+  .benefits {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .formSection {
+    padding: 70px 0;
+  }
+
+  .formWrapper {
+    padding: 35px 25px;
+    border-radius: 20px;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .additionalFields {
+    padding: 24px 20px;
+  }
+
+  .benefit {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .formWrapper {
+    padding: 28px 20px;
+  }
+
+  .title {
+    font-size: 1.9rem;
+  }
+
+  .form {
+    gap: 22px;
+  }
+
+  .submitButton {
+    padding: 16px 32px;
+    font-size: 1rem;
+  }
+
+  .benefitIcon {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .benefit h4 {
+    font-size: 1rem;
+  }
+
+  .benefit p {
+    font-size: 0.9rem;
+  }
+}
