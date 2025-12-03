@@ -110,7 +110,7 @@ const ConsultationForm = () => {
         }
       });
 
-      formDataToSend.append('hasAdditionalFields', showAdditionalFields);
+      formDataToSend.append('hasAdditionalFields', showAdditionalFields ? 'true' : 'false');
 
       // Enviar al endpoint de la API
       const response = await fetch('/api/send-consultation-simple', {
