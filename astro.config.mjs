@@ -32,5 +32,5 @@ export default defineConfig({
       'predictory-anahi-untombed.ngrok-free.dev'
     ]
   }
-}
+  }
 });

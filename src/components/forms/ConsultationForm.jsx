@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ConsultationForm.module.css';
 import { 
   FaUser, 
@@ -13,80 +13,29 @@ import {
 } from 'react-icons/fa';
 import { HiLightBulb } from 'react-icons/hi';
 import { MdSecurity } from 'react-icons/md';
+import { useConsultationForm } from '../../hooks/useConsultationForm';
+import { useConsultationSubmit } from '../../hooks/useConsultationSubmit';
 
 const ConsultationForm = () => {
-  // Estados del formulario
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: '',
-    document: null,
-    additionalData: ''
-  });
+  // Hook para gestión del formulario
+  const {
+    formData,
+    errors,
+    showAdditionalFields,
+    handleInputChange,
+    validateForm,
+    resetForm,
+    toggleAdditionalFields
+  } = useConsultationForm();
 
-  const [showAdditionalFields, setShowAdditionalFields] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
-  const [errors, setErrors] = useState({});
+  // Hook para envío de consultas
+  const {
+    isSubmitting,
+    submitStatus,
+    submitConsultation
+  } = useConsultationSubmit();
 
-  // Manejar cambios en los inputs
-  const handleInputChange = (e) => {
-    const { name, value, type, files } = e.target;
-    
-    if (type === 'file') {
-      setFormData(prev => ({
-        ...prev,
-        [name]: files[0]
-      }));
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        [name]: value
-      }));
-    }
-
-    // Limpiar error del campo cuando el usuario empieza a escribir
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
-  };
-
-  // Validaciones del formulario
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = 'El nombre es requerido';
-    }
-
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = 'El apellido es requerido';
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'El email es requerido';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Email inválido';
-    }
-
-    if (formData.phone.trim() && !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(formData.phone)) {
-      newErrors.phone = 'Teléfono inválido';
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'El mensaje es requerido';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  // Envío del formulario
+  // Manejo del envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -94,58 +43,10 @@ const ConsultationForm = () => {
       return;
     }
 
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-
-    try {
-      // Crear FormData para enviar archivos
-      const formDataToSend = new FormData();
-      
-      // Agregar todos los campos del formulario
-      Object.keys(formData).forEach(key => {
-        if (key === 'document' && formData[key]) {
-          formDataToSend.append('document', formData[key]);
-        } else if (key !== 'document') {
-          formDataToSend.append(key, formData[key]);
-        }
-      });
-
-      formDataToSend.append('hasAdditionalFields', showAdditionalFields ? 'true' : 'false');
-
-      // Enviar al endpoint de la API
-      const response = await fetch('/api/send-consultation-simple', {
-        method: 'POST',
-        body: formDataToSend,
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        setSubmitStatus('success');
-        
-        // Mostrar mensaje específico si hay nota sobre simulación
-        if (result.note) {
-          console.log('ℹ️ ', result.note);
-        }
-        
-        // Resetear formulario
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          message: '',
-          document: null,
-          additionalData: ''
-        });
-        setShowAdditionalFields(false);
-      } else {
-        throw new Error('Error en el envío');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
+    const result = await submitConsultation(formData, showAdditionalFields);
+    
+    if (result.success) {
+      resetForm();
     }
   };
 
@@ -308,7 +209,7 @@ const ConsultationForm = () => {
             <div className={styles.toggleSection}>
               <button
                 type="button"
-                onClick={() => setShowAdditionalFields(!showAdditionalFields)}
+                onClick={toggleAdditionalFields}
                 className={styles.toggleButton}
               >
                 <FaInfoCircle />
@@ -335,7 +236,7 @@ const ConsultationForm = () => {
                 </div>
 
                 <div className={styles.field}>
-                  <label className={styles.label}>Documento (PDF o imagen)</label>
+                  <label className={styles.label}>Documento (PDF, imagen o Word)</label>
                   <div className={styles.fileInputWrapper}>
                     <FaFileUpload className={styles.fileIcon} />
                     <input
@@ -343,7 +244,7 @@ const ConsultationForm = () => {
                       name="document"
                       onChange={handleInputChange}
                       className={styles.fileInput}
-                      accept=".pdf,.jpg,.jpeg,.png,.gif"
+                      accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx"
                       id="fileInput"
                     />
                     <label htmlFor="fileInput" className={styles.fileLabel}>

@@ -17,24 +17,29 @@ import FloatingWhatsAppButton from '../components/whatsapp/FloatingWhatsAppButto
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- SEO Meta tags -->
-		<title>Portal de Negocios - Te buscamos la mejor opción para tu inversión</title>
-		<meta name="description" content="Servicios financieros especializados. Te ayudamos a encontrar las mejores oportunidades de inversión y compra. Optimizamos cada inversión para maximizar el valor obtenido." />
-		<meta name="keywords" content="servicios financieros, inversiones, compras, maquinarias, rodados, herramientas, neumáticos, materiales construcción, instalaciones, tecnología, equipamiento" />
+		<title>Portal de Negocios | Servicios Financieros y Gestión de Inversiones en Argentina</title>
+		<meta name="description" content="Expertos en servicios financieros. Te ayudamos a encontrar las mejores opciones para tu inversión en maquinarias, rodados, herramientas y equipamiento. Asesoramiento profesional y personalizado." />
+		<meta name="keywords" content="servicios financieros Argentina, inversiones empresariales, compra maquinarias, rodados comerciales, herramientas industriales, neumáticos, materiales construcción, equipamiento tecnológico, asesoramiento financiero, gestión de inversiones" />
 		<meta name="author" content="Portal de Negocios" />
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#123142" />
 		
 		<!-- Open Graph Meta tags -->
-		<meta property="og:title" content="Portal de Negocios - Servicios Financieros" />
-		<meta property="og:description" content="Te buscamos la mejor opción para tu inversión o compra. Trabajamos en colaboración con Grupo Alpes." />
+		<meta property="og:title" content="Portal de Negocios | Servicios Financieros y Gestión de Inversiones" />
+		<meta property="og:description" content="Expertos en asesoramiento financiero. Te ayudamos a encontrar las mejores opciones para tu inversión empresarial. Trabajamos en colaboración con Grupo Alpes." />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://portal-de-negocios.com" />
-		<meta property="og:image" content="/og-image.jpg" />
+		<meta property="og:image" content="https://portal-de-negocios.com/og-image.jpg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:site_name" content="Portal de Negocios" />
 		<meta property="og:locale" content="es_AR" />
 		
 		<!-- Twitter Card Meta tags -->
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Portal de Negocios - Servicios Financieros" />
-		<meta name="twitter:description" content="Te buscamos la mejor opción para tu inversión o compra." />
-		<meta name="twitter:image" content="/twitter-card.jpg" />
+		<meta name="twitter:title" content="Portal de Negocios | Servicios Financieros" />
+		<meta name="twitter:description" content="Expertos en asesoramiento financiero y gestión de inversiones empresariales en Argentina." />
+		<meta name="twitter:image" content="https://portal-de-negocios.com/twitter-card.jpg" />
 		
 		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -44,12 +49,11 @@ import FloatingWhatsAppButton from '../components/whatsapp/FloatingWhatsAppButto
 		<link rel="manifest" href="/site.webmanifest" />
 		
 		<!-- Preconnect para performance -->
-		<link rel="preconnect" href="https://images.unsplash.com" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		
-		<!-- Google Fonts -->
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+		<!-- Google Fonts optimizado -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		
 		<!-- Canonical URL -->
 		<link rel="canonical" href="https://portal-de-negocios.com" />
@@ -58,21 +62,51 @@ import FloatingWhatsAppButton from '../components/whatsapp/FloatingWhatsAppButto
 		<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
-			"@type": "Organization",
+			"@type": "FinancialService",
 			"name": "Portal de Negocios",
-			"description": "Servicios financieros especializados. Te ayudamos a encontrar las mejores oportunidades de inversión y compra.",
+			"description": "Servicios financieros especializados y asesoramiento para inversiones empresariales. Expertos en gestión de compras de maquinarias, rodados, herramientas y equipamiento.",
 			"url": "https://portal-de-negocios.com",
 			"logo": "https://portal-de-negocios.com/logo.png",
+			"image": "https://portal-de-negocios.com/og-image.jpg",
+			"priceRange": "$$",
+			"telephone": "+5492923530179",
+			"areaServed": {
+				"@type": "Country",
+				"name": "Argentina"
+			},
+			"address": {
+				"@type": "PostalAddress",
+				"addressCountry": "AR"
+			},
 			"contactPoint": {
 				"@type": "ContactPoint",
 				"telephone": "+5492923530179",
 				"contactType": "customer service",
 				"areaServed": "AR",
-				"availableLanguage": "Spanish"
+				"availableLanguage": ["Spanish"],
+				"contactOption": "TollFree"
 			},
-			"address": {
-				"@type": "PostalAddress",
-				"addressCountry": "AR"
+			"hasOfferCatalog": {
+				"@type": "OfferCatalog",
+				"name": "Servicios Financieros",
+				"itemListElement": [
+					{
+						"@type": "Offer",
+						"itemOffered": {
+							"@type": "Service",
+							"name": "Asesoramiento en Inversiones",
+							"description": "Gestión y asesoramiento para inversiones empresariales"
+						}
+					},
+					{
+						"@type": "Offer",
+						"itemOffered": {
+							"@type": "Service",
+							"name": "Gestión de Compras",
+							"description": "Búsqueda y gestión de compras de maquinarias, rodados y equipamiento"
+						}
+					}
+				]
 			},
 			"sameAs": [
 				"https://wa.me/5492923530179"
@@ -111,18 +145,13 @@ import FloatingWhatsAppButton from '../components/whatsapp/FloatingWhatsAppButto
 			
 			/* Reducir movimiento para usuarios que lo prefieren */
 			@media (prefers-reduced-motion: reduce) {
-				* {
+				*,
+				*::before,
+				*::after {
 					animation-duration: 0.01ms !important;
 					animation-iteration-count: 1 !important;
 					transition-duration: 0.01ms !important;
 					scroll-behavior: auto !important;
-				}
-			}
-			
-			/* Modo oscuro */
-			@media (prefers-color-scheme: dark) {
-				:root {
-					color-scheme: dark;
 				}
 			}
 			
@@ -171,18 +200,24 @@ import FloatingWhatsAppButton from '../components/whatsapp/FloatingWhatsAppButto
 		<!-- Main content -->
 		<main id="main-content">
 			<!-- Hero Section -->
-			<Hero client:load />
-				<!-- Consultation Form -->
-			<ConsultationForm client:load />
+			<section aria-label="Presentación principal">
+				<Hero client:load />
+			</section>
+			
 			<!-- Categories Section -->
-			<CategoriesSection client:load />
+			<section aria-label="Categorías de servicios">
+				<CategoriesSection client:load />
+			</section>
 			
 			<!-- About Section -->
-			<AboutSection client:load />
-				<!-- Consultation Form -->
-			<ConsultationForm client:load />
+			<section aria-label="Sobre nosotros">
+				<AboutSection client:load />
+			</section>
 			
-		
+			<!-- Consultation Form -->
+			<section aria-label="Formulario de consulta">
+				<ConsultationForm client:load />
+			</section>
 		</main>
 		
 		<!-- Footer -->
@@ -191,31 +226,15 @@ import FloatingWhatsAppButton from '../components/whatsapp/FloatingWhatsAppButto
 		<!-- Floating WhatsApp Button -->
 		<FloatingWhatsAppButton client:load />
 		
-		<!-- Scripts adicionales -->
+		<!-- Analytics placeholder -->
+		<!-- Descomentar y configurar cuando tengas un ID de Google Analytics
+		<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
 		<script>
-			// Google Analytics (reemplaza GA_MEASUREMENT_ID con tu ID real)
-			// window.dataLayer = window.dataLayer || [];
-			// function gtag(){dataLayer.push(arguments);}
-			// gtag('js', new Date());
-			// gtag('config', 'GA_MEASUREMENT_ID');
-			
-			// Service Worker para PWA (opcional)
-			// if ('serviceWorker' in navigator) {
-			//   navigator.serviceWorker.register('/sw.js');
-			// }
-			
-			// Performance monitoring
-			window.addEventListener('load', () => {
-				// Log performance metrics
-				const perfData = performance.getEntriesByType('navigation')[0];
-				console.log('Page Load Time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
-			});
-			
-			// Error handling
-			window.addEventListener('error', (e) => {
-				console.error('JavaScript Error:', e.error);
-				// Aquí podrías enviar errores a un servicio de monitoreo
-			});
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'GA_MEASUREMENT_ID');
 		</script>
+		-->
 	</body>
 </html>

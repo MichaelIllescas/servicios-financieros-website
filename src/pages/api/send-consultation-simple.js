@@ -7,8 +7,6 @@
 
   export async function POST({request}) {
     try { 
-      console.log('📧 API: Recibiendo solicitud de consulta...');
-      
       const formData = await request.formData();
 
     // Extraer datos del formulario
@@ -22,11 +20,7 @@
       hasAdditionalFields: formData.get('hasAdditionalFields') || 'false'
     };
 
-    console.log('📧 API: Datos  recibidos:', {
-      nombre: consultationData.firstName,
-      apellido: consultationData.lastName,
-      email: consultationData.email
-    });
+    console.log('📧 Nueva consulta:', consultationData.email);
 
     // Validar campos obligatorios
     if (!consultationData.firstName || !consultationData.lastName ||
@@ -69,14 +63,16 @@
         'image/jpeg',
         'image/jpg',  
         'image/png',
-        'image/gif'
+        'image/gif',
+        'application/msword',                                                  // .doc
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'  // .docx
       ];  
 
       if (!allowedTypes.includes(documentFile.type)) {
         return new Response(
           JSON.stringify({
             success: false,
-            error: 'Tipo de archivo no permitido. Solo se permiten PDF e imágenes.'
+            error: 'Tipo de archivo no permitido. Solo se permiten PDF, imágenes y documentos Word.'
           }),
           
           {
@@ -109,17 +105,12 @@
           type: documentFile.type,
           size: documentFile.size
         };
-
-        console.log('📎  API: Archivo adjunto:', documentFile.name, `(${(documentFile.size / 1024).toFixed(2)} KB)`);
     }
 
     // Obtener servicio de email
     const emailService = getEmailService();
 
-  
-
     // Enviar email principal
-    console.log('📤 API: Enviando email de consulta...');
     const emailResult = await emailService.sendConsultationEmail(consultationData, processedDocument);
 
     if (!emailResult.success) {
@@ -138,16 +129,19 @@
 
     // Enviar email de confirmación al cliente (no bloquear si falla)
     try {
-      console.log('📧  Enviando email de confirmación al cliente...');
-      await emailService.sendConfirmationEmail(
+      const confirmResult = await emailService.sendConfirmationEmail(
         consultationData.email,
-         `${consultationData.firstName} ${consultationData.lastName}`
+        `${consultationData.firstName} ${consultationData.lastName}`
       );
+      
+      if (!confirmResult.success) {
+        console.warn('⚠️  Confirmación no enviada:', confirmResult.error);
+      }
     } catch (confirmError) {
-      console.warn('⚠️  No se pudo enviar email de confirmación al cliente:', confirmError.message);
+      console.error('❌ Error en confirmación:', confirmError.message);
     }
 
-    console.log('✅ Consulta procesada exitosamente.');
+    console.log('✅ Consulta procesada');
 
      // Respuesta exitosa
     return new Response(
@@ -162,7 +156,7 @@
       }
     );
   } catch (error) {
-    console.error('❌ API: Error inesperado al procesar la consulta:', error);
+    console.error('❌ Error al procesar consulta:', error.message);
 
     return new Response(
       JSON.stringify({
