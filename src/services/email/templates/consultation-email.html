@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Consulta - {{APP_NAME}}</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h1 style="color: #123142; margin: 0 0 10px 0; font-size: 28px;">🏢 {{APP_NAME}}</h1>
+            <p style="color: #666; margin: 0 0 5px 0;">Nueva consulta recibida</p>
+            <p style="color: #666; margin: 0 0 20px 0;"><strong>Fecha:</strong> {{CURRENT_DATE}}</p>
+            
+            <div style="background: #ffebee; border: 1px solid #f44336; border-radius: 5px; padding: 15px; margin-bottom: 20px; text-align: center;">
+                <p style="color: #c62828; font-weight: bold; margin: 0;">⚡ Nueva consulta requiere atención</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <div style="background: #f8fafc; border-left: 4px solid #123142; padding: 15px; margin-bottom: 15px; border-radius: 0 5px 5px 0;">
+                    <p style="color: #123142; font-weight: bold; font-size: 14px; text-transform: uppercase; margin: 0 0 5px 0;">Nombre Completo</p>
+                    <p style="color: #333; font-size: 16px; margin: 0;">{{FIRST_NAME}} {{LAST_NAME}}</p>
+                </div>
+                
+                <div style="background: #f8fafc; border-left: 4px solid #123142; padding: 15px; margin-bottom: 15px; border-radius: 0 5px 5px 0;">
+                    <p style="color: #123142; font-weight: bold; font-size: 14px; text-transform: uppercase; margin: 0 0 5px 0;">Email</p>
+                    <p style="color: #333; font-size: 16px; margin: 0;"><a href="mailto:{{EMAIL}}" style="color: #123142; text-decoration: none;">{{EMAIL}}</a></p>
+                </div>
+                
+                {{PHONE_SECTION}}
+                
+                <div style="background: #fff8e1; border-left: 4px solid #ff9800; padding: 20px; margin: 20px 0; border-radius: 0 5px 5px 0;">
+                    <p style="color: #ff9800; font-weight: bold; font-size: 14px; text-transform: uppercase; margin: 0 0 10px 0;">📝 Mensaje / Consulta</p>
+                    <p style="color: #333; font-size: 16px; margin: 0; line-height: 1.6;">{{MESSAGE}}</p>
+                </div>
+                
+                {{ADDITIONAL_SECTION}}
+            </div>
+            
+            <div style="text-align: center; padding-top: 20px; border-top: 1px solid #eee; color: #666; font-size: 12px;">
+                <p style="margin: 0 0 5px 0;"><strong>{{APP_NAME}}</strong> - {{COMPANY}}</p>
+                <p style="margin: 0 0 5px 0;">{{TAGLINE}}</p>
+                <p style="margin: 0 0 10px 0;">En colaboración con {{PARTNER}}</p>
+                <p style="margin: 0; font-size: 10px;">Este email fue enviado automáticamente desde el formulario de consultas.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

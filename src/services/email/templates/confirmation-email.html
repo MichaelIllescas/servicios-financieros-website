@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta recibida - {{APP_NAME}}</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px; background: #f4f4f4;">
+        <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <h2 style="color: #123142; text-align: center; margin: 0 0 20px 0;">¡Gracias por tu consulta!</h2>
+            
+            <p style="color: #333; line-height: 1.6;">Hola <strong>{{CLIENT_NAME}}</strong>,</p>
+            
+            <p style="color: #333; line-height: 1.6;">Recibimos tu consulta exitosamente y nuestro equipo se pondrá en contacto contigo a la brevedad.</p>
+            
+            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #123142; margin: 20px 0;">
+                <p style="color: #123142; font-weight: bold; margin: 0 0 10px 0;">¿Qué sigue?</p>
+                <ul style="color: #333; line-height: 1.8; margin: 0; padding-left: 20px;">
+                    <li>📋 Revisaremos tu consulta en detalle</li>
+                    <li>📞 Te contactaremos en las próximas 24-48 horas</li>
+                    <li>💡 Te presentaremos las mejores opciones disponibles</li>
+                </ul>
+            </div>
+            
+            <p style="text-align: center; color: #123142; font-style: italic; margin: 30px 0; font-size: 16px;">
+                "{{TAGLINE}}"
+            </p>
+            
+            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; font-size: 12px; color: #666;">
+                <p style="margin: 0 0 5px 0;"><strong>{{APP_NAME}}</strong><br>
+                {{COMPANY}}<br>
+                En colaboración con {{PARTNER}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -323,22 +323,6 @@
   font-size: 0.95rem;
 }
 
-/* Success Message */
-.successMessage {
-  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-  border: 2px solid #86efac;
-  color: #166534;
-  padding: 16px 20px;
-  border-radius: 12px;
-  font-weight: 600;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-size: 0.95rem;
-}
-
 /* Submit Button */
 .submitButton {
   background: linear-gradient(135deg, #123142 0%, #1a4a5e 100%);
@@ -376,6 +360,245 @@
 
 .submitButton:active:not(:disabled) {
   transform: translateY(-1px);
+}
+
+/* Loading Overlay */
+.loadingOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.loadingModal {
+  background: white;
+  border-radius: 24px;
+  padding: 48px 32px;
+  max-width: 400px;
+  margin: 0 20px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  animation: scaleIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.spinnerWrapper {
+  position: relative;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.spinner {
+  width: 64px;
+  height: 64px;
+  color: #123142;
+  animation: spin 1s linear infinite;
+}
+
+.spinnerRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(18, 49, 66, 0.2);
+  border-radius: 50%;
+}
+
+.loadingTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #123142;
+  margin-bottom: 12px;
+}
+
+.loadingText {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.loadingDots {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #123142;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+/* Success Overlay */
+.successOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.successModal {
+  background: white;
+  border-radius: 24px;
+  padding: 48px 32px;
+  max-width: 500px;
+  margin: 0 20px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  animation: scaleIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.successIconWrapper {
+  position: relative;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scaleIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.successIcon svg {
+  width: 48px;
+  height: 48px;
+  color: #16a34a;
+  animation: checkmark 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.successRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 96px;
+  border: 4px solid #bbf7d0;
+  border-radius: 50%;
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.successTitle {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #123142;
+  margin-bottom: 16px;
+}
+
+.successText {
+  color: #64748b;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.successInfo {
+  background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+  border: 2px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+
+.successInfo p {
+  color: #1e40af;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.closeButton {
+  background: #123142;
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+  background: #0a1419;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(18, 49, 66, 0.3);
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+@keyframes checkmark {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes ping {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  75%, 100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
 }
 
 /* Responsive Design */
@@ -462,5 +685,20 @@
 
   .benefit p {
     font-size: 0.9rem;
+  }
+  
+  .loadingModal,
+  .successModal {
+    padding: 36px 24px;
+  }
+
+  .loadingTitle,
+  .successTitle {
+    font-size: 1.35rem;
+  }
+
+  .loadingText,
+  .successText {
+    font-size: 0.95rem;
   }
 }

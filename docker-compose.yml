@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  php:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      SMTP_HOST: smtp.hostinger.com
+      SMTP_PORT: 465
+      SMTP_USER: info@imperial-net.com
+      SMTP_PASS: Imperialnet.1
