@@ -88,7 +88,7 @@ const ConsultationForm = () => {
 
       formDataToSend.append('hasAdditionalFields', showAdditionalFields ? 'true' : 'false');
 
-      const response = await fetch('http://localhost:8000/_send-email.php', {
+      const response = await fetch('/_send-email.php',  {
         method: 'POST',
         body: formDataToSend,
       });
@@ -345,7 +345,7 @@ const ConsultationForm = () => {
                     </div>
 
                     <div className={styles.field}>
-                      <label className={styles.label}>Documento (PDF o imagen)</label>
+                      <label className={styles.label}>Documento (PDF, Word o imagen)</label>
                       <div className={styles.fileInputWrapper}>
                         <FaFileUpload className={styles.fileIcon} />
                         <input
@@ -353,7 +353,7 @@ const ConsultationForm = () => {
                           name="document"
                           onChange={handleInputChange}
                           className={styles.fileInput}
-                          accept=".pdf,.jpg,.jpeg,.png,.gif"
+                          accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx"
                           id="fileInput"
                         />
                         <label htmlFor="fileInput" className={styles.fileLabel}>

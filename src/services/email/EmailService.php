@@ -2,9 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '/app/src/services/email/PHPMailer/PHPMailer.php';
-require '/app/src/services/email/PHPMailer/SMTP.php';
-require '/app/src/services/email/PHPMailer/Exception.php';
+require_once __DIR__ . '/PHPMailer/PHPMailer.php';
+require_once __DIR__ . '/PHPMailer/SMTP.php';
+require_once __DIR__ . '/PHPMailer/Exception.php';
 
 /**
  * Servicio de Email - Portal de Negocios

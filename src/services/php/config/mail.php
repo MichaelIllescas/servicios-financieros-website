@@ -7,7 +7,7 @@
 require_once __DIR__ . '/../utils/helpers.php';
 
 // Cargar variables de entorno desde .env
-$envPath = 'D:/SPRINGBOOT/servicios-financieros-website/.env';
+$envPath = dirname($_SERVER['DOCUMENT_ROOT']) . '/.env';
 
 try {
     loadEnv($envPath);
@@ -52,10 +52,11 @@ return [
             'image/jpg',
             'image/png',
             'image/gif',
-        ],
-        'allowed_extensions' => ['pdf', 'jpg', 'jpeg', 'png', 'gif'],
+             'application/msword',                                                
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
     ],
-    
+    'allowed_extensions' => ['pdf', 'jpg', 'jpeg', 'png', 'gif', 'doc', 'docx'],
+],  
     // Configuración de la aplicación
     'app' => [
         'name' => 'Portal de Negocios',
